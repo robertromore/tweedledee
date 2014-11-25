@@ -1,0 +1,18 @@
+#menu {
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  width: 200px;
+  background: $menu_color;
+
+  // @include box-shadow(-5px 0 5px #000 inset);
+}
+#horizontal-menu {
+  height: 50px;
+  background: $menu_color;
+  position: absolute;
+  top: 60px;
+  left: 200px;
+  right: 0;
+}

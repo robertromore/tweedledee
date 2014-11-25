@@ -1,0 +1,10 @@
+#content {
+  position: absolute;
+  top: 110px;
+  left: 200px;
+  right: 0;
+  bottom: 0;
+  background: $main_color;
+  @include box-shadow(0 0 12px 0 #000);
+  border-top-left-radius: 10px;
+}

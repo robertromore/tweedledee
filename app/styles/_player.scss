@@ -1,0 +1,187 @@
+#player {
+  position: absolute;
+  top: 0;
+  left: 200px;
+  right: 0;
+  height: 60px;
+  line-height: 60px;
+  background: $player_color;
+  border-bottom-left-radius: 10px;
+  overflow: hidden;
+  @include box-shadow(0 0 10px #000);
+  z-index: 2;
+
+  .tooltip {
+    z-index: 500 !important;
+  }
+
+  #currently-playing {
+    position: absolute;
+    left: 200px;
+    right: 200px;
+    top: -5px;
+    height: 65px;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, .1);
+    // background-image: url("http://fc05.deviantart.net/fs70/f/2012/035/8/2/arctic_monkeys_wallpaper_by_albertodsantos-d4oog4s.png");
+    background-position: center center;
+    @include box-shadow(0 0 5px rgba(0, 0, 0, .5) inset);
+
+    .cover {
+      position: absolute;
+      top: 0; bottom: 0; right: 0; left: 0;
+      // z-index:
+      /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+      // background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjMiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+      // background: -moz-linear-gradient(top,  rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+      // background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.75)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+      // background: -webkit-linear-gradient(top,  rgba(0,0,0,0.75) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+      // background: -o-linear-gradient(top,  rgba(0,0,0,0.75) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+      // background: -ms-linear-gradient(top,  rgba(0,0,0,0.75) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+      // background: linear-gradient(to bottom,  rgba(0,0,0,0.75) 0%,rgba(0,0,0,0) 100%); /* W3C */
+      // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d000000', endColorstr='#00000000',GradientType=0 ); /* IE6-8 */
+    }
+    .over {
+      position: relative;
+      z-index: 2;
+    }
+    #artist-image {
+      width: 56px;
+      height: 56px;
+      background: rgba(0, 0, 0, .4);
+      border-radius: 50%;
+      margin: 2px 0;
+      float: left;
+      // background-image: url("http://www.undertheradarmag.com/uploads/article_images/Arctic_Monkeys_Interview_UndertheRadar_Photo_Credit_Zackery_Michael_HI_RES.jpg");
+      background-size: 100% 100%;
+      cursor: pointer;
+      @include box-shadow(0 0 1px 1px rgba(0, 0, 0, .7), 0 0 0 1px rgba(255, 255, 255, .15) inset);
+    }
+    .playing-options {
+      width: 40px;
+      height: 60px;
+      float: left;
+      margin: 0 5px;
+      button {
+        border-radius: 0;
+        background: none;
+        &.active, &:active {
+          box-shadow: none;
+          color: $active_element_color;
+          outline: none;
+        }
+        &.focus, &:focus {
+          outline: none;
+        }
+      }
+      &.repeat-shuffle {
+        button {
+          height: 30px;
+          float: left;
+        }
+      }
+      &.play-list {
+        position: absolute;
+        right: 0;
+      }
+    }
+    #song-info {
+      position: absolute;
+      left: 116px;
+      right: 50px;
+
+      #current-song,
+      #current-album,
+      #song-progress {
+        height: 20px;
+        line-height: 20px;
+        h4, h5 {
+          margin: 0;
+          text-align: center;
+          line-height: 20px;
+          color: white;
+          text-shadow: 1px 1px 1px #000;
+        }
+      }
+      #song-progress {
+        display: table;
+        .time-now, .total-time {
+          display: table-cell;
+        }
+        .tracker {
+          display: table-cell;
+          position: relative;
+          width: 100%;
+          cursor: pointer;
+          .tracker-wrapper {
+            margin: 0 10px;
+            position: relative;
+            .bar {
+              height: 2px;
+              position: absolute;
+              top: 10px;
+              &.total-time-bar {
+                background-color: rgba(255, 255, 255, .5);
+                @include box-shadow(0 0 0 1px rgba(0, 0, 0, .5), 1px 1px 1px 0 rgba(0, 0, 0, .8));
+                position: absolute;
+                left: 0; right: 0;
+              }
+              &.time-now-bar {
+                background-color: $active_element_color;
+                width: 50%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #volume-control {
+    position: absolute;
+    right: 0;
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    button {
+      position: absolute;
+      top: 50%;
+      margin: -16px 5px 0;
+    }
+    .tracker {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 42px; right: 10px;
+      cursor: pointer;
+      .bar {
+        height: 2px;
+        position: absolute;
+        top: 50%;
+        margin-top: -1px;
+        &.available {
+          background-color: rgba(0, 0, 0, .3);
+          left: 0; right: 0;
+        }
+        &.volume {
+          background-color: $active_element_color;
+          left: 0; right: 50px;
+        }
+      }
+    }
+  }
+
+  #player-controls {
+    position: absolute;
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    .play, .pause {
+      margin: 0 3px;
+    }
+    .play span {
+      left: -3px;
+      top: 0;
+    }
+  }
+}
